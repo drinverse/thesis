@@ -1,0 +1,117 @@
+void main()
+{
+   TRISC.F0 = 0; //Makes RC0 a output pin
+   TRISC.F1 = 0; //Makes RC1 a output pin
+   TRISC.F2 = 0; //Makes RC0 a output pin
+
+   TRISA.F2 = 1; //Configure 1st bit of PORTD as input
+   TRISA.F2 = 1; //Configure 1st bit of PORTD as input
+   TRISA.F3 = 1; //Configure 2nd bit of PORTD as input
+   TRISA.F4 = 1; //Configure 2nd bit of PORTD as input
+
+  do
+  {
+
+   PORTC.F0 = 0; //Turns OFF relay 1
+   delay_ms(100);
+   PORTC.F1 = 0; //Turns OFF relay 2
+   delay_ms(100);
+   PORTC.F2 = 0; //Turns OFF relay 3
+   delay_ms(100);
+
+   while(PORTA.F0 == 1)
+   {
+     if(PORTB.F1 == 0)
+    {
+     Stepper_Step(25);
+    }
+     
+     else if(PORTA.F1 == 0)
+    {
+     PORTC.F0 = 1; //Turns ON relay 1
+    delay_ms(100); 
+    }
+     
+     else if(PORTA.F2 == 0)
+    {
+     PORTC.F1 = 1; //Turns ON relay 2
+    delay_ms(100); 
+    }
+
+     else if(PORTA.F3 == 0)
+    {
+     PORTC.F2 = 1; //Turns ON relay 3
+    delay_ms(100); 
+    }
+ 
+     
+   }
+
+   while(PORTA.F1 == 0)
+   {
+    PORTC.F0 = 1; //Turns ON relay 1
+    delay_ms(100);
+    
+    if(PORTA.F2 == 0)
+    {
+    PORTC.F1 = 1; //Turns ON relay 2
+    delay_ms(100);
+    }
+    
+    else if(PORTA.F2 == 1)
+    {
+    PORTC.F1 = 0; //Turns OFF relay 2
+    delay_ms(100);
+    }
+    
+    else{
+    PORTC.F0 = 0; //Turns OFF relay 1
+    delay_ms(1000);
+    }
+
+   }
+
+   while(PORTA.F2 == 0)
+   {
+    PORTC.F1 = 1; //Turns ON relay 2
+    delay_ms(100);
+
+    if(PORTA.F1 == 0)
+    {
+    PORTC.F0 = 1; //Turns ON relay 1
+    delay_ms(100);
+    }
+
+    else if(PORTA.F1 == 1)
+    {
+    PORTC.F0 = 0; //Turns OFF relay 1
+    delay_ms(100);
+    }
+
+    else{
+    PORTC.F1 = 0; //Turns OFF relay 2
+    delay_ms(100);
+    }
+
+   }
+
+   while(PORTA.F3 == 0)
+   {
+    PORTC.F2 = 1; //Turns ON relay 3
+    delay_ms(100);
+
+    if(PORTA.F3 == 1)
+    {
+    PORTC.F2 = 0; //Turns OFF relay 3
+    delay_ms(100);
+    }
+
+    else{
+    PORTC.F2 = 0; //Turns OFF relay
+    delay_ms(100);
+    }
+   }
+   
+  }while(1);
+
+}

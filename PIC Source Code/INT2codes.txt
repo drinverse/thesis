@@ -1,0 +1,92 @@
+// Feeder Start
+if(hour == 0x23 && minute == 0x35){
+PORTA.F3 = 1;
+delay_ms(300);
+}
+
+// Draining -> start
+else if(hour == 0x23 && minute == 0x36){
+PORTA.F0 = 0;
+delay_ms(300);
+}
+
+// Draining -->
+else if(hour == 0x23 && minute == 0x37){
+PORTA.F0 = 0;
+delay_ms(300);
+}
+
+// Draining --->
+else if(hour == 0x23 && minute == 0x38){
+PORTA.F0 = 0;
+delay_ms(300);
+}
+
+// Draining ---->complete
+else if(hour == 0x23 && minute == 0x39){
+PORTA.F0 = 0;
+delay_ms(300);
+}
+
+// Circulating -> start
+else if(hour == 0x23 && minute == 0x40){
+PORTA.F0 = 0;
+delay_ms(300);
+PORTA.F1 = 0;
+delay_ms(300);
+}
+
+// circulating --> complete
+else if(hour == 0x23 && minute == 0x41){
+PORTA.F0 = 0;
+delay_ms(300);
+PORTA.F1 = 0;
+delay_ms(300);
+}
+
+// Refilling -> start
+else if(hour == 0x23 && minute == 0x42){
+PORTA.F0 = 1;
+delay_ms(300);
+PORTA.F1 = 0;
+delay_ms(300);
+}
+
+// Refilling -->
+else if(hour == 0x23 && minute == 0x43){
+PORTA.F0 = 1;
+delay_ms(300);
+PORTA.F1 = 0;
+delay_ms(300);
+}
+
+// Refilling ---> complete
+else if(hour == 0x23 && minute == 0x44){
+PORTA.F0 = 1;
+delay_ms(300);
+PORTA.F1 = 1;
+delay_ms(300);
+}
+
+// Water to filtration -> start
+else if(hour == 0x23 && minute == 0x45){
+PORTA.F2 = 0;
+delay_ms(300);
+}
+
+// Water to filtration --> complete
+else if(hour == 0x23 && minute == 0x46){
+PORTA.F2 = 1;
+delay_ms(300);
+}
+
+else{
+PORTA.F0 = 1;
+delay_ms(300);
+PORTA.F1 = 1;
+delay_ms(300);
+PORTA.F2 = 1;
+delay_ms(300);
+PORTA.F3 = 0;
+delay_ms(300);
+}

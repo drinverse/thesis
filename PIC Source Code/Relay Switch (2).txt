@@ -1,0 +1,62 @@
+void main()
+{
+   TRISB.F0 = 0; //Makes RB0 a output pin
+   TRISB.F1 = 0; //Makes RB1 a output pin
+   TRISD.F0 = 1; //Configure 1st bit of PORTD as input
+   TRISD.F1 = 1; //Configure 2nd bit of PORTD as input
+  do
+  {
+   PORTB.F0 = 0; //Turns OFF relay
+   delay_ms(100);
+   PORTB.F1 = 0; //Turns OFF relay
+   delay_ms(100);
+   while(PORTD.F0 == 0)
+   {
+    PORTB.F0 = 1; //Turns ON relay
+    delay_ms(100);
+    
+    if(PORTD.F1 == 0)
+    {
+    PORTB.F1 = 1; //Turns ON relay
+    delay_ms(100);
+    }
+    
+    else if(PORTD.F1 == 1)
+    {
+    PORTB.F1 = 0; //Turns OFF relay
+    delay_ms(100);
+    }
+    
+    else{
+    PORTB.F0 = 0; //Turns OFF relay
+    delay_ms(1000);
+    }
+
+   }
+
+   while(PORTD.F1 == 0)
+   {
+    PORTB.F1 = 1; //Turns ON relay
+    delay_ms(100);
+
+    if(PORTD.F0 == 0)
+    {
+    PORTB.F0 = 1; //Turns ON relay
+    delay_ms(100);
+    }
+
+    else if(PORTD.F0 == 1)
+    {
+    PORTB.F0 = 0; //Turns OFF relay
+    delay_ms(100);
+    }
+
+    else{
+    PORTB.F1 = 0; //Turns OFF relay
+    delay_ms(100);
+    }
+
+   }
+  }while(1);
+
+}

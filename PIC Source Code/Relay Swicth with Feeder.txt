@@ -1,0 +1,107 @@
+   while(PORTA.F0 == 0)
+   {
+    PORTC.F0 = 1; //Turns ON relay 1
+    delay_ms(100);
+
+    if(PORTA.F1 == 0) c 
+    {
+    PORTC.F1 = 1; //Turns ON relay 2
+    delay_ms(100);
+    }
+
+    else if(PORTA.F1 == 1)
+    {
+    PORTC.F1 = 0; //Turns OFF relay 2
+    delay_ms(100);
+    }
+
+    else if(PORTA.F2 == 0)
+    {
+    PORTC.F2 = 1; //Turns ON relay 3
+    delay_ms(100);
+    }
+    
+    else if(PORTA.F2 == 1)
+    {
+    PORTC.F2 = 0; //Turns OFF relay 3
+    delay_ms(100);
+    }
+
+    else{
+    PORTC.F0 = 0; //Turns ON relay 1
+    delay_ms(100);
+    }
+
+   }
+
+   while(PORTA.F1 == 0)
+   {
+    PORTC.F1 = 1; //Turns ON relay 2
+    delay_ms(100);
+
+    if(PORTA.F0 == 0)
+    {
+    PORTC.F0 = 1; //Turns ON relay 1
+    delay_ms(100);
+    }
+
+    else if(PORTA.F0 == 1)
+    {
+    PORTC.F0 = 0; //Turns OFF relay 1
+    delay_ms(100);
+    }
+
+    else if(PORTA.F2 == 0)
+    {
+    PORTC.F2 = 1; //Turns ON relay 3
+    delay_ms(100);
+    }
+    
+    else if(PORTA.F2 == 1)
+    {
+    PORTC.F2 = 0; //Turns OFF relay 3
+    delay_ms(100);
+    }
+
+    else{
+    PORTC.F1 = 0; //Turns OFF relay 2
+    delay_ms(100);
+    }
+
+   }
+
+   while(PORTA.F2 == 0)
+   {
+    PORTC.F2 = 1; //Turns ON relay 3
+    delay_ms(100);
+
+    if(PORTA.F0 == 0)
+    {
+    PORTC.F0 = 1; //Turns ON relay 1
+    delay_ms(100);
+    }
+
+    else if(PORTA.F0 == 1)
+    {
+    PORTC.F0 = 0; //Turns OFF relay 1
+    delay_ms(100);
+    }
+
+    else if(PORTA.F1 == 0)
+    {
+    PORTC.F1 = 1; //Turns ON relay 2
+    delay_ms(100);
+    }
+    
+    else if(PORTA.F1 == 1)
+    {
+    PORTC.F1 = 0; //Turns OFF relay 2
+    delay_ms(100);
+    }
+
+    else{
+    PORTC.F2 = 0; //Turns OFF relay 3
+    delay_ms(100);
+    }
+   }
+

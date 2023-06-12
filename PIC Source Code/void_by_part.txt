@@ -1,0 +1,110 @@
+void Feeder_Drain(){ // 4 minutes
+     // Feeder Start
+      if(hour == 0x16 && minute == 0x25){
+        PORTA.F3 = 1;
+        delay_ms(300);
+        }
+
+      // Draining -> start
+      else if(hour == 0x16 && minute == 0x26){
+        PORTA.F0 = 0;
+        delay_ms(300);
+        }
+
+      // Draining -->
+      else if(hour == 0x16 && minute == 0x27){
+        PORTA.F0 = 0;
+        delay_ms(300);
+        }
+
+      // Draining --->
+      else if(hour == 0x16 && minute == 0x28){
+        PORTA.F0 = 0;
+        delay_ms(300);
+        }
+
+      // Draining ---->complete
+      else if(hour == 0x16 && minute == 0x29){
+        PORTA.F0 = 0;
+        delay_ms(300);
+        }
+
+      else{
+        PORTA.F0 = 1;
+        delay_ms(300);
+        PORTA.F3 = 0;
+        delay_ms(300);
+        }
+}
+
+void Circulate_Refill(){ // 4 minutes
+      // Circulating -> start
+      if(hour == 0x16 && minute == 0x30){
+        PORTA.F0 = 0;
+        delay_ms(300);
+        PORTA.F1 = 0;
+        delay_ms(300);
+        }
+
+      // circulating --> complete
+      else if(hour == 0x16 && minute == 0x31){
+        PORTA.F0 = 0;
+        delay_ms(300);
+        PORTA.F1 = 0;
+        delay_ms(300);
+        }
+
+      // Refilling -> start
+      else if(hour == 0x16 && minute == 0x32){
+        PORTA.F0 = 1;
+        delay_ms(300);
+        PORTA.F1 = 0;
+        delay_ms(300);
+        }
+
+      // Refilling -->
+      else if(hour == 0x16 && minute == 0x33){
+        PORTA.F0 = 1;
+        delay_ms(300);
+        PORTA.F1 = 0;
+        delay_ms(300);
+        }
+
+      // Refilling ---> complete
+      else if(hour == 0x16 && minute == 0x34){
+        PORTA.F0 = 1;
+        delay_ms(300);
+        PORTA.F1 = 1;
+        delay_ms(300);
+        }
+
+      else{
+        PORTA.F0 = 1;
+        delay_ms(300);
+        PORTA.F1 = 1;
+        delay_ms(300);
+        }
+
+}
+
+void Water_Filtration(){ // 1 minute
+      // Water to filtration -> start
+      if(hour == 0x16 && minute == 0x35){
+        PORTA.F2 = 0;
+        delay_ms(300);
+        }
+
+      // Water to filtration --> complete
+      else if(hour == 0x16 && minute == 0x36){
+        PORTA.F2 = 1;
+        delay_ms(300);
+        }
+
+      else{
+        PORTA.F2 = 1;
+        delay_ms(300);
+        }
+}
+
+
+

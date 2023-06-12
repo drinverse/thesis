@@ -1,0 +1,26 @@
+// Stepper motor module connections
+ sbit Stepper_pin1 at RD0_bit;
+ sbit Stepper_pin2 at RD1_bit;
+ sbit Stepper_pin3 at RD2_bit;
+ sbit Stepper_pin4 at RD3_bit;
+ sbit Stepper_pin1_Direction at TRISD0_bit;
+ sbit Stepper_pin2_Direction at TRISD1_bit;
+ sbit Stepper_pin3_Direction at TRISD2_bit;
+ sbit Stepper_pin4_Direction at TRISD3_bit;
+ // End stepper motor module connections
+
+ void main() {
+   ADCON1 = 0x07;      // Configure AN pins as digital
+   CMCON  = 0X07;      // Disable comparators
+   OPTION_REG = 0;     // Enable pull-up resistors for port B
+   TRISB = 3;
+   Stepper_Init(20);       // Initialize stepper motor(20 steps/revoltion)
+   stepper_speed(200);     // Set stepper motor speed to 200 rpm
+   while (1) {                      // Endless loop
+     while(PORTB.F0 == 0)
+       Stepper_Step(1) ;   // Move motor 1 step in 1st direction
+     while(PORTB.F1 == 0)
+       Stepper_Step(-1) ;   // Move motor 1 step in 2nd direction
+     PORTD = 0;
+     }
+   }

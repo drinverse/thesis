@@ -1,0 +1,79 @@
+void main()
+{
+   TRISB.F1 = 0; //Makes RB1 a output pin
+   TRISB.F2 = 0; //Makes RB2 a output pin
+   TRISD.F0 = 1; //Configure 1st bit of PORTD as input
+   TRISD.F1 = 1; //Configure 2nd bit of PORTD as input
+  do
+  {
+   if(PORTD.F0 == 0)   //If the switch is pressed
+    {
+       Delay_ms(1);    //Switch Debounce
+       if(PORTD.F0 == 0) //If the switch is still pressed
+       {
+        do
+        {
+         PORTB.F1 = 1;   //Turns ON relay
+         Delay_ms(1); // 1000 mS delay
+         }while(1);
+       }
+    }
+
+    else if(PORTD.F1 == 0)   //If the switch is pressed
+    {
+       Delay_ms(1);    //Switch Debounce
+       if(PORTD.F1 == 0) //If the switch is still pressed
+       {
+        do
+        {
+         PORTB.F2 = 1;   //Turns ON relay
+         Delay_ms(1); // 1000 mS delay
+         }while(1);
+       }
+    }
+
+    else if(PORTD.F0 == 0 && PORTD.F1 == 0)   //If the switch is pressed
+    {
+       Delay_ms(1);    //Switch Debounce
+       if(PORTD.F0 == 0 && PORTD.F1 == 0)//If the switch is still pressed
+       {
+        do
+        {
+	 PORTB.F1 = 1;   //Turns ON relay
+         Delay_ms(1); // 1000 mS delay
+         PORTB.F2 = 1;   //Turns ON relay
+         Delay_ms(1); // 1000 mS delay
+         }while(1);
+       }
+    }
+
+    else if(PORTD.F0 == 1)   //If the switch is NOT pressed
+    {
+       Delay_ms(1);    //Switch Debounce
+       if(PORTD.F0 == 1)//If the switch is still pressed
+       {
+        do
+        {
+         PORTB.F1 = 0;   //Turns ON relay
+         Delay_ms(1); // 1000 mS delay
+         }while(1);
+       }
+    }
+
+    else if(PORTD.F1 == 1)   //If the switch is NOT pressed
+    {
+       Delay_ms(1);    //Switch Debounce
+       if(PORTD.F1 == 1)//If the switch is still pressed
+       {
+        do
+        {
+         PORTB.F2 = 0;   //Turns ON relay
+         Delay_ms(1); // 1000 mS delay
+         }while(1);
+       }
+    }
+
+
+ }while(1);
+
+}
